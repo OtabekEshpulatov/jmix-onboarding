@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://userStepListView.title"
+      focusComponent="userStepsDataGrid">
+    <data readOnly="true">
+        <collection id="userStepsDc"
+                    class="com.company.jmixonboarding.entity.UserStep">
+            <fetchPlan extends="_base">
+                <property name="user" fetchPlan="_base"/>
+                <property name="step" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="userStepsDl">
+                <query>
+                    <![CDATA[select e from UserStep e order by e.createdBy]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="userStepsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="userStepsDataGrid.create"/>
+            <button id="editBtn" action="userStepsDataGrid.edit"/>
+            <button id="removeBtn" action="userStepsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="userStepsDl"/>
+        </hbox>
+        <dataGrid id="userStepsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="userStepsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="user"/>
+                <column property="step"/>
+                <column property="dueDate"/>
+                <column property="completedDate"/>
+                <column property="sortValue"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.22.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+
+    <changeSet id="10" author="otabek eshpo'latov">
+
+
+        <createTable tableName="USER_STEP">
+            <column name="ID" type="${uuid.type}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="varchar(255)"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="varchar(255)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="deleted_by" type="varchar(255)"/>
+            <column name="deleted_date" type="datetime"/>
+            <column name="user_id" type="uuid">
+                <constraints nullable="false" referencedTableName="USER_" referencedColumnNames="id" foreignKeyName="user_id"/>
+            </column>
+            <column name="step_id" type="uuid">
+                <constraints nullable="false" referencedTableName="STEP" referencedColumnNames="ID" foreignKeyName="step_id"/>
+            </column>
+
+            <column name="due_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="completed_date" type="date"/>
+
+            <column name="sort_value" type="integer">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
