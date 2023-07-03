@@ -54,12 +54,12 @@ public class UserStep {
     private OffsetDateTime deletedDate;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @NotNull
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @NotNull
     @JoinColumn(name = "step_id", nullable = false)
     private Step step;

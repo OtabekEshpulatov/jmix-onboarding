@@ -55,23 +55,24 @@
                </entityPicker>-->
             <entityComboBox id="departmentField" property="department" itemsContainer="departmentsDc"/>
             <datePicker id="joiningDateField" property="joiningDate"/>
+            <details summaryText="msg://entity.user.picture">
+                <hbox>
+                    <fileStorageUploadField id="pictureField" property="picture" dataContainer="userDc" />
+                    <image id="image" property="picture" dataContainer="userDc"  height="10em" width="10em" classNames="user-picture"/>
+                </hbox>
+            </details>
         </formLayout>
-
-        <hbox id="buttonsPanel" classNames="buttons-panel" >
+        <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="generateButton" text="Generate"/>
         </hbox>
-
-
-
-            <dataGrid id="stepsDataGrid" width="100%" height="100%" dataContainer="stepsDc" minHeight="300px" minWidth="300px">
-                <columns>
-                    <column property="step.name" autoWidth="true"/>
-                    <column property="dueDate"/>
-                    <column property="completedDate" />
-                </columns>
-            </dataGrid>
-
-
+        <dataGrid id="stepsDataGrid" width="100%" height="100%" dataContainer="stepsDc" minHeight="300px"
+                  minWidth="300px">
+            <columns>
+                <column property="step.name" autoWidth="true"/>
+                <column property="dueDate"/>
+                <column property="completedDate"/>
+            </columns>
+        </dataGrid>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

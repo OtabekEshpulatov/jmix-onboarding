@@ -1,5 +1,6 @@
 package com.company.jmixonboarding.entity;
 
+import io.jmix.core.FileRef;
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -76,6 +77,10 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     @Column(name = "joining_date")
     private LocalDate joiningDate;
+
+
+    @Column(name = "picture", length = 1024)
+    private FileRef picture;
 
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
@@ -221,5 +226,13 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public void setJoiningDate(LocalDate joiningDate) {
         this.joiningDate = joiningDate;
+    }
+
+    public FileRef getPicture() {
+        return picture;
+    }
+
+    public void setPicture(FileRef picture) {
+        this.picture = picture;
     }
 }

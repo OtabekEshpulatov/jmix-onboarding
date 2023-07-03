@@ -27,6 +27,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
 
+    implementation files("urlchanger.jar")
+
     implementation("io.jmix.appsettings:jmix-appsettings-starter")
     implementation("io.jmix.appsettings:jmix-appsettings-flowui-starter")
 
